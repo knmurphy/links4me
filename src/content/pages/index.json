@@ -1,0 +1,42 @@
+{
+    "type": "Page",
+    "title": "My Social Links",
+    "description": "Connect with me on various platforms!",
+    "profileImage": "/images/profile-pic.jpg",
+    "backgroundColor": "#f0f0f0",
+    "textColor": "#333333",
+    "links": [
+      {
+        "type": "Link",
+        "title": "Twitter",
+        "url": "https://twitter.com/yourusername",
+        "icon": "twitter",
+        "backgroundColor": "#1DA1F2",
+        "textColor": "#ffffff"
+      },
+      {
+        "type": "Link",
+        "title": "LinkedIn",
+        "url": "https://www.linkedin.com/in/yourusername",
+        "icon": "linkedin",
+        "backgroundColor": "#0077B5",
+        "textColor": "#ffffff"
+      },
+      {
+        "type": "Link",
+        "title": "GitHub",
+        "url": "https://github.com/yourusername",
+        "icon": "github",
+        "backgroundColor": "#333333",
+        "textColor": "#ffffff"
+      },
+      {
+        "type": "Link",
+        "title": "Personal Website",
+        "url": "https://www.yourwebsite.com",
+        "icon": "globe",
+        "backgroundColor": "#4CAF50",
+        "textColor": "#ffffff"
+      }
+    ]
+  }
