@@ -1,10 +1,40 @@
 ---
-// src/pages/index.astro
-import { getEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
 import Link from '../components/Link.astro';
 import Profile from '../components/Profile.astro';
 
-const page = await getEntry('pages', 'index');
+let page;
+let pageData;
+try {
+  const pages = await getCollection('pages');
+  console.log('All pages:', pages);
+  page = pages[0];  // Assuming you only have one page
+  console.log('Selected page:', page);
+  
+  if (page) {
+    pageData = page.data;
+    console.log('Page data:', pageData);
+    console.log('Links array:', pageData.links);
+  } else {
+    console.log('No page found in the collection');
+  }
+} catch (error) {
+  console.error('Error fetching page content:', error);
+}
+
+if (!pageData) {
+  pageData = {
+    title: 'My Social Links',
+    description: 'Connect with me!',
+    profileImage: '/placeholder-image.jpg',
+    backgroundColor: '#ffffff',
+    textColor: '#000000',
+    links: []
+  };
+  console.log('Using fallback data');
+}
+
+console.log('Final pageData used for rendering:', pageData);
 ---
 
 <html lang="en">
@@ -13,25 +43,29 @@ const page = await getEntry('pages', 'index');
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>{page.data.title}</title>
+    <title>{pageData.title}</title>
   </head>
-  <body style={`background-color: ${page.data.backgroundColor}; color: ${page.data.textColor};`}>
+  <body style={`background-color: ${pageData.backgroundColor}; color: ${pageData.textColor};`}>
     <main>
       <Profile 
-        title={page.data.title}
-        description={page.data.description}
-        profileImage={page.data.profileImage}
+        title={pageData.title}
+        description={pageData.description}
+        profileImage={pageData.profileImage}
       />
       <ul class="links-list">
-        {page.data.links.map((link) => (
-          <Link 
-            title={link.title}
-            url={link.url}
-            icon={link.icon}
-            backgroundColor={link.backgroundColor}
-            textColor={link.textColor}
-          />
-        ))}
+        {pageData.links && pageData.links.length > 0 ? (
+          pageData.links.map((link) => (
+            <Link 
+              title={link.title}
+              url={link.url}
+              icon={link.icon}
+              backgroundColor={link.backgroundColor}
+              textColor={link.textColor}
+            />
+          ))
+        ) : (
+          <li>No links available (Length: {pageData.links ? pageData.links.length : 'undefined'})</li>
+        )}
       </ul>
     </main>
   </body>
