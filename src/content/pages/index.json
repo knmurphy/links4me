@@ -2,7 +2,7 @@
     "type": "Page",
     "title": "My Social Links",
     "description": "Connect with me on various platforms!",
-    "profileImage": "/images/profile-pic.jpg",
+    "profileImage": "/images/profile-image.jpg",
     "backgroundColor": "#f0f0f0",
     "textColor": "#333333",
     "links": [
