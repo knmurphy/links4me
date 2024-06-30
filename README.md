@@ -11,6 +11,3 @@ This is a personal link listing website that allows users to add, edit, and dele
 Visual Editing: Add, edit, and delete links with a visual editor.
 
 TailwindCSS theme support: Easily change the theme of the website by changing the TailwindCSS theme.
-
-
-
