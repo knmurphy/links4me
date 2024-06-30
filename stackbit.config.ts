@@ -12,9 +12,31 @@ export default defineStackbitConfig({
         {
           name: "Page",
           type: "page",
-          urlPath: "/{slug}",
-          filePath: "content/pages/{slug}.json",
-          fields: [{ name: "title", type: "string", required: true }]
+          urlPath: "/",
+          filePath: "content/pages/index.json",
+          fields: [
+            { name: "title", type: "string", required: true },
+            { name: "description", type: "string" },
+            { name: "profileImage", type: "image", required: true },
+            { name: "backgroundColor", type: "color" },
+            { name: "textColor", type: "color" },
+            {
+              name: "links",
+              type: "list",
+              items: { type: "model", models: ["Link"] }
+            }
+          ]
+        },
+        {
+          name: "Link",
+          type: "object",
+          fields: [
+            { name: "title", type: "string", required: true },
+            { name: "url", type: "string", required: true },
+            { name: "icon", type: "string" },
+            { name: "backgroundColor", type: "color" },
+            { name: "textColor", type: "color" }
+          ]
         }
       ],
       assetsConfig: {

@@ -1,0 +1,32 @@
+---
+// src/components/Link.astro
+export interface Props {
+  title: string;
+  url: string;
+  icon?: string;
+  backgroundColor?: string;
+  textColor?: string;
+}
+
+const { title, url, icon, backgroundColor, textColor } = Astro.props;
+---
+
+<li>
+  <a href={url} style={`background-color: ${backgroundColor}; color: ${textColor};`} class="link">
+    {icon && <span class="icon">{icon}</span>}
+    {title}
+  </a>
+</li>
+
+<style>
+  .link {
+    display: block;
+    padding: 10px;
+    margin: 10px 0;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  .icon {
+    margin-right: 10px;
+  }
+</style>
